@@ -1,0 +1,82 @@
+'''Constants created for the rate of each currency '''
+DIRHAM_TO_EURO_RATE = 0.22
+DIRHAM_TO_BRITISH_POUND_RATE = 0.19
+DIRHAM_TO_DOLLAR_RATE = 0.27
+
+'''Defining a function to convert Dirham to Euro'''
+def dirham_to_euro(cash): # Function for Dirham to Euro conversion
+    return cash * DIRHAM_TO_EURO_RATE #We return here the amount the user entered multiplied by the rate of each currency as set previously
+
+'''Defining a function to convert Dirham to British Pound'''
+def dirham_to_british_pound(cash): # Function for Dirham to British Pound conversion
+    return cash * DIRHAM_TO_BRITISH_POUND_RATE #We return here the amount the user entered multiplied by the rate of each currency as set previously
+
+'''Defining a function to convert Dirham to Dollar'''
+def dirham_to_dollar(cash): # Function for Dirham to US Dollar conversion
+    return cash * DIRHAM_TO_DOLLAR_RATE #We return here the amount the user entered multiplied by the rate of each currency as set previously
+
+'''Defining a function to convert Dollar to Dirham'''
+def dollar_to_dirham(cash): # Function for Dollar to Dirham conversion
+    return cash / DIRHAM_TO_DOLLAR_RATE #We return here the amount the user entered divided by the rate of each currency as set previously
+
+'''Defining a function to convert British Pound to Dirham'''
+def british_pound_to_dirham(cash): # Function for British Pound to Dirham conversion
+    return cash / DIRHAM_TO_BRITISH_POUND_RATE #We return here the amount the user entered divided by the rate of each currency as set previously
+
+'''Defining a function to convert Euro to Dirham'''
+def euro_to_dirham(cash): # Function for Euro to AED conversion
+    return cash / DIRHAM_TO_EURO_RATE #We return here the amount the user entered divided by the rate of each currency as set previously
+
+'''Defining a main function and using if and else statements in the main'''
+def main():
+    while True:
+        print("Welcome to Group 5 Currency Converter !!!")
+        print("1. Dirham to other currencies")
+        print("2. Other currencies to Dirham") # Main function to present the menu and guide users through conversion process
+        choice = int(input("Enter your choice: "))
+
+        '''Using if statement and saying that if the user chose the first option, it will ask him to enter 
+        the amount in dirhams, and then will give him the choice to choose which currency to convert to.'''
+        if choice == 1:
+            cash = float(input("Enter amount in Dirhams: ")) # Asking the user to enter the amount in dirhams
+            print("Select currency to convert to:")
+            print("1. Euro")
+            print("2. British Pound")
+            print("3. US Dollar")
+            currency_choosing = int(input("Enter your choice: ")) # Asking the user to enter which currency to convert to
+            '''Applying the if statement below where we are saying that if he chose option 1 do this, elif do 
+            this , elif do this, else do that...'''
+            if currency_choosing == 1:
+                print("Converted amount:", dirham_to_euro(cash), "Euro") # Printing the converted amount from dirham to euro
+            elif currency_choosing == 2:
+                print("Converted amount:", dirham_to_british_pound(cash), "British Pound") # Printing the converted amount from dirham to britishh pound
+            elif currency_choosing == 3:
+                print("Converted amount:", dirham_to_dollar(cash), "US Dollar") # Printing the converted amount from dirham to US Dollar
+            else:
+                print("Invalid choice")
+            '''Using elif statement and saying that if the user chose the second option, it will ask him to enter the amount in other currencies
+            and it will convert the amount to dirhams'''
+        elif choice == 2:
+            cash = float(input("Enter amount: ")) # Asking the user to enter the amount in other currencies 
+            print("Select currency to convert from:")
+            print("1. Euro")
+            print("2. British Pound")
+            print("3. US Dollar")
+            currency_choosing = int(input("Enter your choice: ")) # Asking the user to enter which currency to convert from
+            
+            if currency_choosing == 1:
+                print("Converted amount:", euro_to_dirham(cash), "Dirhams") # Printing the converted amount from euro to dirham
+            elif currency_choosing == 2:
+                print("Converted amount:", british_pound_to_dirham(cash), "Dirhams") #Printing the converted amount from british pound to dirham
+            elif currency_choosing == 3:
+                print("Converted amount:", dollar_to_dirham(cash), "Dirhams") # Printing the converted amount from us dollar to dirham
+            else:
+                print("Invalid choice")
+        else:
+            print("Invalid choice")
+        trying_again = input("Do you want to make another conversion for other currencies? (y/n)")
+        if trying_again.lower() != "y":
+            break
+
+if __name__ == "__main__":
+    main() # Calling the main at the end to make sure all functions in the main are working
